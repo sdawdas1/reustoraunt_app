@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ dish.name }}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{{ dish.name }}</h1>
+        <nav>
+            <a href="{% url 'home' %}">На главную</a> |
+            <a href="{% url 'view_cart' %}">Корзина</a>
+        </nav>
+    </header>
+    <main>
+        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
+        <h2>{{ dish.name }}</h2>
+        <p>{{ dish.description }}</p>
+        <p>Цена: {{ dish.price }} грн</p>
+        <form action="{% url 'add_to_cart' dish.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Добавить в корзину</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; {{ current_year }} Ваш Ресторан</p>
+    </footer>
+</body>
+</html>

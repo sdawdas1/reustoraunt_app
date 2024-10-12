@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Профиль пользователя</h1>
+        <nav>
+            <a href="{% url 'home' %}">На главную</a> |
+            <a href="{% url 'logout' %}">Выйти</a>
+        </nav>
+    </header>
+    <main>
+        <p>Имя пользователя: {{ user.username }}</p>
+        <p>Электронная почта: {{ user.email }}</p>
+        <!-- Вы можете добавить здесь больше информации о пользователе -->
+    </main>
+    <footer>
+        <p>&copy; {{ current_year }} Ваш Ресторан</p>
+    </footer>
+</body>
+</html>
